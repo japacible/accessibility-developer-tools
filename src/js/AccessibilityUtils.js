@@ -224,7 +224,7 @@ axs.utils.isAncestor = function(ancestor, node) {
     if (node === ancestor)
         return true;
 
-    return axs.utils.isAncestor(ancestor, node.parentNode);
+    return axs.utils.isAncestor(ancestor, axs.utils.parentElement(node));
 };
 
 /**
