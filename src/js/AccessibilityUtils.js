@@ -225,6 +225,7 @@ axs.utils.isAncestor = function(ancestor, node) {
     if (node === ancestor)
         return true;
 
+    // TODO(apacible): make this pretty?
     return axs.utils.isAncestor(ancestor, node.parentNode || node.host);
 };
 
