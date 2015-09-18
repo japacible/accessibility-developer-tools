@@ -62,3 +62,20 @@ test('an element with negative tabindex and empty computed text is ignored', fun
     { result: axs.constants.AuditResult.NA });
 });
 
+test('an element in the shadow dom passes the audit', function() {
+  var fixture = document.getElementById('qunit-fixture');
+
+  if (fixture.createShadowRoot) {
+    var root = fixture.createShadowRoot();
+    var input = document.createElement('input');
+    root.appendChild(input);
+
+    var rule = axs.AuditRules.getRule('focusableElementNotVisibleAndNotAriaHidden');
+    deepEqual(
+      rule.run({scope: fixture}),
+      { elements: [], result: axs.constants.AuditResult.PASS });
+  } else {
+    console.warn("Test platform does not support shadow DOM");
+    ok(true);
+  }
+});

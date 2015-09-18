@@ -67,6 +67,7 @@ axs.utils.parentElement = function(node) {
 
     switch (parentNode.nodeType) {
     case Node.ELEMENT_NODE:
+
         return /** @type {Element} */ (parentNode);
     case Node.DOCUMENT_FRAGMENT_NODE:
         return parentNode.host;
@@ -224,7 +225,7 @@ axs.utils.isAncestor = function(ancestor, node) {
     if (node === ancestor)
         return true;
 
-    return axs.utils.isAncestor(ancestor, node.parentNode);
+    return axs.utils.isAncestor(ancestor, node.parentNode || node.host);
 };
 
 /**
