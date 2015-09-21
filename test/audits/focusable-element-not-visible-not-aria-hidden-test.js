@@ -62,7 +62,7 @@ test('an element with negative tabindex and empty computed text is ignored', fun
     { result: axs.constants.AuditResult.NA });
 });
 
-test('an element in the shadow dom passes the audit', function() {
+test('an element in the shadow dom that is not visible passes the audit', function() {
   var fixture = document.getElementById('qunit-fixture');
 
   if (fixture.createShadowRoot) {
